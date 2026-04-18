@@ -9,12 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReservaRequest {
-    private int PasajeroId;
+    private Long PasajeroId;
     private Long vueloId;
     private String nombrePasajero;
     private String pasaporte;
     private Long asientoId;
     private Long claseId;
+    private String nacionalidad;
 
 
 }

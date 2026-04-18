@@ -10,4 +10,5 @@ import java.util.function.LongToDoubleFunction;
 @Repository
 public interface AsientoRepository extends JpaRepository<Asiento, Long> {
 
+    List<Asiento> findByAvion_Id(Long avionId);
 }

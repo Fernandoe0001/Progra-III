@@ -3,7 +3,13 @@ package aeropuerto.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "vuelo")
 public class Vuelo {
@@ -14,29 +20,26 @@ public class Vuelo {
 
     private String numeroVuelo;
 
+    private LocalDateTime fechaSalida;
+    private LocalDateTime fechaLlegada;
+
+    @ManyToOne
+    @JoinColumn(name = "aeropuerto_origen_id")
+    private Aeropuerto aeropuertoOrigen;
+
+    @ManyToOne
+    @JoinColumn(name = "aeropuerto_destino_id")
+    private Aeropuerto aeropuertoDestino;
+
     @ManyToOne
     @JoinColumn(name = "avion_id")
     private Avion avion;
 
-    // GETTERS y SETTERS
+    @ManyToOne
+    @JoinColumn(name = "aerolinea_id")
+    private Aerolinea aerolinea;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNumeroVuelo() {
-        return numeroVuelo;
-    }
-
-    public void setNumeroVuelo(String numeroVuelo) {
-        this.numeroVuelo = numeroVuelo;
-    }
-
-    public Avion getAvion() {
-        return avion;
-    }
-
-    public void setAvion(Avion avion) {
-        this.avion = avion;
-    }
+    @ManyToOne
+    @JoinColumn(name = "estado_vuelo_id")
+    private EstadoVuelo estado;
 }

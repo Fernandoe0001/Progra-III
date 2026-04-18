@@ -15,5 +15,8 @@ public class Pasajero {
 
     private String nombre;
     private String pasaporte;
+    private String telefono;
+    private String correo;
     private String nacionalidad;
+    private String estado = "ACTIVO";
 }

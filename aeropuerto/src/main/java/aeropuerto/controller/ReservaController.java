@@ -2,7 +2,7 @@ package aeropuerto.controller;
 
 
 import aeropuerto.dto.ReservaRequest;
-import aeropuerto.model.ReservaView;
+import aeropuerto.dto.ReservaResponse;
 import aeropuerto.service.ReservaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +18,18 @@ public class ReservaController {
         this.service = service;
     }
 
-    /*@GetMapping
-    public List<ReservaView> listar() {
-        return service.obtenerReservas();
-    }*/
-
     @PostMapping
     public String crear(@RequestBody ReservaRequest request) {
         return service.crearReserva(request);
+    }
+
+    @GetMapping
+    public List<ReservaResponse> listar() {
+        return service.listarReservas();
+    }
+
+    @DeleteMapping("/{id}")
+    public String cancelar(@PathVariable Long id) {
+        return service.cancelarReserva(id);
     }
 }

@@ -26,4 +26,12 @@ public class Boleto {
     @JoinColumn(name = "vuelo_id")
     private Vuelo vuelo;
 
+    @ManyToOne
+    @JoinColumn(name = "estado_boleto_id")
+    private EstadoBoleto estado;
+
+    @ManyToOne
+    @JoinColumn(name = "clase_id")
+    private Clase clase;
+
 }

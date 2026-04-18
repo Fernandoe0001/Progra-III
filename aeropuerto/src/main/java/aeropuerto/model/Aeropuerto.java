@@ -8,18 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "avion")
-public class Avion {
+@Table(name = "aeropuerto")
+public class Aeropuerto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String nombre;
+    //private String codigo;
 
-    private String modelo;
-    private String marca;
-
-
-
-    }
-
+}
