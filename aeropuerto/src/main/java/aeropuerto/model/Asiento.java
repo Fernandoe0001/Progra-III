@@ -20,12 +20,7 @@ public class Asiento {
     private String tipo; // VENTANA, PASILLO, CENTRO
 
     @ManyToOne
-    @JoinColumn(name = "Avion_id")
+    @JoinColumn(name = "Avion_id",  nullable = false)
     private Avion avion;
-
-
-
-    // GETTERS y SETTERS
-
 
 }

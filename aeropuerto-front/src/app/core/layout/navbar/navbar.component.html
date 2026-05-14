@@ -1,0 +1,20 @@
+<mat-toolbar class="navbar">
+  <button mat-icon-button class="menu-button" type="button" aria-label="Abrir menu" (click)="menuClick.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="brand" routerLink="/dashboard">
+    <mat-icon>flight_takeoff</mat-icon>
+    <span>Aeropuerto Los Primos</span>
+  </div>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button aria-label="Notificaciones">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-button routerLink="/login">
+    <mat-icon>account_circle</mat-icon>
+    Login
+  </button>
+</mat-toolbar>

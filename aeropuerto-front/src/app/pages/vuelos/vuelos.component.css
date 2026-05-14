@@ -1,0 +1,32 @@
+.page {
+  display: grid;
+  gap: 18px;
+}
+
+h1 {
+  margin: 0 0 6px;
+}
+
+p,
+span {
+  color: #64748b;
+}
+
+mat-card {
+  border-radius: 8px;
+}
+
+.flight-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.flight-row div {
+  flex: 1;
+  display: grid;
+}
+
+mat-icon {
+  color: #0f766e;
+}

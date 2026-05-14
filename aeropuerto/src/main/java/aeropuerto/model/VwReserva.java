@@ -7,17 +7,19 @@ import lombok.Data;
 @Entity
 @Table(name = "vw_reservas_completo")
 @Data
-public class ReservaView {
+public class VwReserva {
 
     @Id
-    private String pasaporte; //campo único
+    @Column(name ="boleto_id")
+    private Long boletoId;
 
-    private String usuario;
     private String pasajero;
-    private String numero_vuelo;
+
+    @Column(name = "numero_vuelo")
+    private String numeroVuelo;
+
     private String origen;
     private String destino;
     private String asiento;
-    private String clase;
     private String estado;
 }

@@ -1,0 +1,44 @@
+.sidebar {
+  min-height: 100%;
+  padding: 22px 14px;
+  color: #e5eefb;
+}
+
+.sidebar-header {
+  display: grid;
+  gap: 4px;
+  padding: 0 12px 18px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.14);
+  margin-bottom: 12px;
+}
+
+.sidebar-header span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.sidebar-header small {
+  color: #94a3b8;
+}
+
+a[mat-list-item] {
+  height: 48px;
+  margin: 6px 0;
+  border-radius: 8px;
+  color: #cbd5e1;
+}
+
+a[mat-list-item] mat-icon {
+  color: #94a3b8;
+}
+
+a[mat-list-item].active-link,
+a[mat-list-item]:hover {
+  background: rgba(20, 184, 166, 0.16);
+  color: #ffffff;
+}
+
+a[mat-list-item].active-link mat-icon,
+a[mat-list-item]:hover mat-icon {
+  color: #5eead4;
+}

@@ -1,0 +1,47 @@
+<section class="login-page">
+  <mat-card class="login-card">
+    <div class="login-brand">
+      <mat-icon>flight_takeoff</mat-icon>
+    </div>
+
+    <mat-card-header>
+      <mat-card-title>Iniciar sesion</mat-card-title>
+      <mat-card-subtitle>Acceso al sistema aeroportuario</mat-card-subtitle>
+    </mat-card-header>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="correo" autocomplete="email" />
+        <mat-icon matSuffix>mail</mat-icon>
+        @if (loginForm.controls.correo.hasError('required')) {
+          <mat-error>El correo es obligatorio.</mat-error>
+        }
+        @if (loginForm.controls.correo.hasError('email')) {
+          <mat-error>Ingresa un correo valido.</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" autocomplete="current-password" />
+        <mat-icon matSuffix>lock</mat-icon>
+        @if (loginForm.controls.password.hasError('required')) {
+          <mat-error>El password es obligatorio.</mat-error>
+        }
+      </mat-form-field>
+
+      @if (loginError) {
+        <p class="login-error">{{ loginError }}</p>
+      }
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="isLoading">
+        @if (isLoading) {
+          <mat-spinner diameter="20"></mat-spinner>
+        } @else {
+          <span>Ingresar</span>
+        }
+      </button>
+    </form>
+  </mat-card>
+</section>

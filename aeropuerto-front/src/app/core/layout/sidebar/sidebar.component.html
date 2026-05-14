@@ -1,0 +1,26 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <span>Operaciones</span>
+    <small>Control aeroportuario</small>
+  </div>
+
+  <mat-nav-list>
+    @for (item of navItems; track item.route) {
+      <a
+        mat-list-item
+        [routerLink]="item.route"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="navigationClick.emit()"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+      </a>
+    }
+  </mat-nav-list>
+
+  <button mat-button class="logout-button" type="button" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</nav>

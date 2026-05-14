@@ -2,6 +2,7 @@ package aeropuerto.service;
 
 import aeropuerto.dto.AsientoResponse;
 import aeropuerto.model.Asiento;
+import aeropuerto.model.Avion;
 import aeropuerto.model.Vuelo;
 import aeropuerto.repository.AsientoRepository;
 import aeropuerto.repository.BoletoRepository;
@@ -24,6 +25,32 @@ public class AsientoService {
         this.boletoRepository = boletoRepository;
     }
 
+    public void generarAsientos(Avion avion) {
+
+        int filas = 30;
+        String[] letras = {"A", "B", "C", "D", "E", "F"};
+
+        for (int i = 1; i <= filas; i++) {
+            for (String letra  : letras) {
+
+                Asiento a = new Asiento();
+                a.setAvion(avion);
+                a.setFila(i);
+                a.setLetra(letra);
+
+                //lógica tipo asiento
+                if (letra.equals("A") || letra.equals("F")) {
+                    a.setTipo("VENTANA");
+                } else if (letra.equals("C") || letra.equals("D")) {
+                    a.setTipo("PASILLO");
+                } else {
+                    a.setTipo("CENTRO");
+                }
+                asientoRepository.save(a);
+            }
+        }
+    }
+
     public List<AsientoResponse> obtenerAsientosPorVuelo(Long vueloId){
 
         Vuelo vuelo = vueloRepository.findById(vueloId)
@@ -35,7 +62,7 @@ public class AsientoService {
         return asientos.stream().map(a -> {
 
             boolean ocupado = boletoRepository
-                    .existsByAsiento_IdAndVuelo_Id(a.getId(), vueloId);
+                    .existsByAsiento_IdAndVuelo_IdAndEstado_IdNot(a.getId(), vueloId, 1L);
 
             String estado = ocupado ? "OCUPADO" : "DISPONIBLE";
 

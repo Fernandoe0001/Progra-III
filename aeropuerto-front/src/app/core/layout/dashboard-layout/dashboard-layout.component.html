@@ -1,0 +1,19 @@
+
+<div class="app-shell">
+  <app-navbar (menuClick)="sidebar.toggle()"></app-navbar>
+
+  <mat-sidenav-container class="shell-container">
+    <mat-sidenav
+      #sidebar
+      class="shell-sidebar"
+      [mode]="isMobile() ? 'over' : 'side'"
+      [opened]="!isMobile()"
+    >
+      <app-sidebar (navigationClick)="closeSidebarOnMobile(sidebar)"></app-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="shell-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,31 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 64px;
+  padding: 0 24px;
+  background: #ffffff;
+  color: #172033;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brand mat-icon {
+  color: #0f766e;
+}
+
+.spacer {
+  flex: 1;
+}
+
+button {
+  margin-left: 8px;
+}

@@ -41,9 +41,10 @@ public class ReservaService {
     public String crearReserva(ReservaRequest request) {
         //VALIDAR ASIENTO OCUPADO
         boolean ocupado = boletoRepository
-                .existsByAsiento_IdAndVuelo_Id(
+                .existsByAsiento_IdAndVuelo_IdAndEstado_IdNot(
                         request.getAsientoId(),
-                        request.getVueloId()
+                        request.getVueloId(),
+                        2L // ignora CANCELADO
                 );
 
         if (ocupado) {
@@ -123,9 +124,17 @@ public class ReservaService {
         Boleto boleto = boletoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Boleto no encontrado"));
 
-        boletoRepository.delete(boleto);
+        EstadoBoleto estadoCancelado = estadoBoletoRepository.findById(2L)
+        .orElseThrow(() -> new RuntimeException("Estado CANCELADO no encontrado"));
 
-        //registrarBitacora("CANCELAR_RESERVA", "Reserva cancelada ID: " + id);
+        if (boleto.getEstado().getId().equals(2L)) {
+            throw new RuntimeException("La reserva ya está cancelada");
+        }
+
+        boleto.setEstado(estadoCancelado);
+        boletoRepository.save(boleto);
+
+        bitacoraService.registrar("CANCELAR_RESERVA", "Reserva cancelada ID: " + id);
 
         return "Reserva cancelada exitosamente";
     }

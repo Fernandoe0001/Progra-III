@@ -1,8 +1,10 @@
 package aeropuerto.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class AsientoResponse {
 
     private Long id;

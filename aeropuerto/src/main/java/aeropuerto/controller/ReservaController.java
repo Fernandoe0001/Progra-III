@@ -4,6 +4,7 @@ package aeropuerto.controller;
 import aeropuerto.dto.ReservaRequest;
 import aeropuerto.dto.ReservaResponse;
 import aeropuerto.service.ReservaService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,8 @@ public class ReservaController {
     }
 
     @DeleteMapping("/{id}")
-    public String cancelar(@PathVariable Long id) {
-        return service.cancelarReserva(id);
+    public ResponseEntity<?> cancelar(@PathVariable Long id) {
+        service.cancelarReserva(id);
+        return ResponseEntity.noContent().build(); // 204
     }
 }

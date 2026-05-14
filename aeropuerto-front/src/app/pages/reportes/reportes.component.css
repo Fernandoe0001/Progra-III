@@ -1,0 +1,27 @@
+.page,
+.reports-grid,
+mat-card-content {
+  display: grid;
+  gap: 18px;
+}
+
+.reports-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+h1 {
+  margin: 0 0 6px;
+}
+
+p,
+span {
+  color: #64748b;
+}
+
+mat-card {
+  border-radius: 8px;
+}
+
+mat-icon {
+  color: #0f766e;
+}

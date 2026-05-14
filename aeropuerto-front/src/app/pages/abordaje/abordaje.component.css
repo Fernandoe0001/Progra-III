@@ -1,0 +1,32 @@
+.page,
+mat-card-content {
+  display: grid;
+  gap: 18px;
+}
+
+h1 {
+  margin: 0 0 6px;
+}
+
+p,
+span {
+  color: #64748b;
+}
+
+mat-card {
+  border-radius: 8px;
+}
+
+.boarding-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+mat-icon {
+  color: #0f766e;
+}
+
+button {
+  justify-self: start;
+}
